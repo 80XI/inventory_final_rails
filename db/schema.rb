@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_28_081954) do
     t.string "name"
     t.decimal "cost_price"
     t.decimal "selling_price"
-    t.integer "category_id"
+    t.integer "category_id", null: false
     t.decimal "quantity"
     t.decimal "ideal_quantity"
     t.boolean "status"

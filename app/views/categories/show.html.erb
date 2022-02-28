@@ -1,6 +1,15 @@
 <h1><%= @category.name %></h1>
-
 <p><%= @category.status %></p>
+
+<ul>
+  <% @category.items.all.each do |item| %>
+    <li>
+      <%= link_to item.name, item %>
+    </li>
+  <% end %>
+</ul>
+
+
 
 <ul>
   <li><%= link_to "Edit", edit_category_path(@category) %></li>
