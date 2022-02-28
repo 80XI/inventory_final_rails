@@ -1,19 +1,54 @@
 <h1><%= @category.name %></h1>
 <p><%= @category.status %></p>
 
+
 <ul>
-  <% @category.items.all.each do |item| %>
+
+  <% @category.items.each do |item| %>
     <li>
       <%= link_to item.name, item %>
     </li>
   <% end %>
 </ul>
 
+<h3>Add an item</h3>
+<%= form_with model: [ @category, @category.items.build ] do |form| %>
+  <%= form.text_field :category_id ,:readonly => true%>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :cost_price %><br>
+    <%= form.text_field :cost_price %>
+  </div>
+  <div>
+    <%= form.label :selling_price %><br>
+    <%= form.text_field :selling_price %>
+  </div>
+  <div>
+    <%= form.label :quantity %><br>
+    <%= form.text_field :quantity %>
+  </div>
+  <div>
+    <%= form.label :ideal_quantity %><br>
+    <%= form.text_field :ideal_quantity %>
+  </div>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.radio_button :status, true %> Yes<br />
+    <%= form.radio_button :status, false %> No<br />   
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
 
 
 <ul>
-  <li><%= link_to "Edit", edit_category_path(@category) %></li>
-  <li><%= link_to "Destroy", category_path(@category), data: {
+  <li><%= link_to "Edit Category", edit_category_path(@category) %></li>
+  <li><%= link_to "Delete Category", category_path(@category), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>

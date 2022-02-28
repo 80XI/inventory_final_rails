@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @category = category.find(params[:category_id])
+    @category = Category.find(params[:category_id])
     @item = @category.items.create(item_params)
     redirect_to category_path(@category)
   end
