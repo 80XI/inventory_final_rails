@@ -8,7 +8,6 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.decimal :quantity
       t.decimal :ideal_quantity
       t.boolean :status
-
       t.timestamps
     end
   end

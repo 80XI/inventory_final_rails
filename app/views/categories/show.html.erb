@@ -1,50 +1,63 @@
 <h1><%= @category.name %></h1>
 <p><%= @category.status %></p>
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
 
-<ul>
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.items.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.id %></th>
+        <td><%= link_to item.name, item %></td>
+        <td><%= item.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <% @category.items.each do |item| %>
-    <li>
-      <%= link_to item.name, item %>
-    </li>
-  <% end %>
-</ul>
 
 <h3>Add an item</h3>
-<%= form_with model: [ @category, @category.items.build ] do |form| %>
-  <%= form.text_field :category_id ,:readonly => true%>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :cost_price %><br>
-    <%= form.text_field :cost_price %>
-  </div>
-  <div>
-    <%= form.label :selling_price %><br>
-    <%= form.text_field :selling_price %>
-  </div>
-  <div>
-    <%= form.label :quantity %><br>
-    <%= form.text_field :quantity %>
-  </div>
-  <div>
-    <%= form.label :ideal_quantity %><br>
-    <%= form.text_field :ideal_quantity %>
-  </div>
-  <div>
-    <%= form.label :status %><br>
-    <%= form.radio_button :status, true %> Yes<br />
-    <%= form.radio_button :status, false %> No<br />   
-  </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="invisible">
+  <%= form_with model: [ @category, @category.items.build ] do |form| %>
+    <%= form.text_field :category_id ,:readonly => true%>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :cost_price %><br>
+      <%= form.text_field :cost_price %>
+    </div>
+    <div>
+      <%= form.label :selling_price %><br>
+      <%= form.text_field :selling_price %>
+    </div>
+    <div>
+      <%= form.label :quantity %><br>
+      <%= form.text_field :quantity %>
+    </div>
+    <div>
+      <%= form.label :ideal_quantity %><br>
+      <%= form.text_field :ideal_quantity %>
+    </div>
+    <div>
+      <%= form.label :status %><br>
+      <%= form.radio_button :status, true %> Yes<br />
+      <%= form.radio_button :status, false %> No<br />   
+    </div>
 
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
 
 <ul>
   <li><%= link_to "Edit Category", edit_category_path(@category) %></li>
