@@ -1,13 +1,13 @@
 <%= form_with model: @category do |form| %>
-  <div>
+  <div class="form-group">
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
     <% @category.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :status %><br>
     <%= form.radio_button :status, true %> Yes<br />
     <%= form.radio_button :status, false %> No<br />   

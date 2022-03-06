@@ -1,3 +1,16 @@
 <h1><%= @item.name %></h1>
 <h3><%= @item.id %></h3>
 
+<% if @item.header_image.present? %>
+  <%= image_tag @item.header_image %>
+<% else %>  
+  <p>Picture unavailable</p>
+<% end %>
+
+<ul>
+  <li><%= link_to "Edit Item", edit_item_path(@item) %></li>
+  <li><%= link_to "Delete Item", item_path(@item), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
