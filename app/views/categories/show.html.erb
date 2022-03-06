@@ -24,9 +24,9 @@
 
 <h3>Add an item</h3>
 
-<div class="invisible">
+<div>
   <%= form_with model: [ @category, @category.items.build ] do |form| %>
-    <%= form.text_field :category_id ,:readonly => true%>
+    <% form.text_field :category_id ,:readonly => true%>
     <div>
       <%= form.label :name %><br>
       <%= form.text_field :name %>
