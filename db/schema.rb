@@ -62,12 +62,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_092105) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "vendor_id", null: false
+    t.bigint "item_id"
+    t.bigint "vendor_id"
     t.decimal "cost_price"
     t.decimal "purchase_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["vendor_id"], name: "index_purchases_on_vendor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,4 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_092105) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "vendors"
 end
