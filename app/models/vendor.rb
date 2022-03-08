@@ -1,3 +1,4 @@
 class Vendor < ApplicationRecord
-  # belongs_to :purchase
+  has_many :purchases
+  validates :name, uniqueness: true, presence: true
 end
