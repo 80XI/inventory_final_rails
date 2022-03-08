@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'vendors/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "categories#index"
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :items
+  resources :vendors
   # Defines the root path route ("/")
   # root "articles#index"
 end
