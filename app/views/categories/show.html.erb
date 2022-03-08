@@ -6,6 +6,10 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
+      <th scope="col">Cost Price</th>
+      <th scope="col">Selling Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Ideal Quantity</th>
       <th scope="col">Status</th>
 
     </tr>
@@ -15,49 +19,22 @@
       <tr>
         <th scope="row"><%= item.id %></th>
         <td><%= link_to item.name, item %></td>
-        <td><%= item.status %></td>
+        <td><%= item.cost_price %></td>
+        <td><%= item.selling_price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.ideal_quantity %></td>
+        <td><%= item.status %></td>        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 
+
+
 <h3>Add an item</h3>
 
-<div>
-  <%= form_with model: [ @category, @category.items.build ] do |form| %>
-    <% form.text_field :category_id ,:readonly => true%>
-    <div>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </div>
-    <div>
-      <%= form.label :cost_price %><br>
-      <%= form.text_field :cost_price %>
-    </div>
-    <div>
-      <%= form.label :selling_price %><br>
-      <%= form.text_field :selling_price %>
-    </div>
-    <div>
-      <%= form.label :quantity %><br>
-      <%= form.text_field :quantity %>
-    </div>
-    <div>
-      <%= form.label :ideal_quantity %><br>
-      <%= form.text_field :ideal_quantity %>
-    </div>
-    <div>
-      <%= form.label :status %><br>
-      <%= form.radio_button :status, true %> Yes<br />
-      <%= form.radio_button :status, false %> No<br />   
-    </div>
-
-    <div>
-      <%= form.submit %>
-    </div>
-  <% end %>
-</div>
+<%= render "items/new" %>
 
 <ul>
   <li><%= link_to "Edit Category", edit_category_path(@category) %></li>
@@ -66,3 +43,4 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+
