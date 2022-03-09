@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_092105) do
     t.bigint "vendor_id"
     t.decimal "cost_price"
     t.decimal "purchase_quantity"
+    t.decimal "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
