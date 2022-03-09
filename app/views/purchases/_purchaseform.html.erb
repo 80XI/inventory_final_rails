@@ -1,14 +1,16 @@
-<%= form_with model: @purchases do |form| %>
-  <%= form.text_field :@vendor_id ,:readonly => true%>
-  <%= form.text_field :@item_id ,:readonly => true%>
-
+<%= form_with model: @purchase do |form| %>
+  <%= @vendors.count %>
+  <div>
+  <%= form.collection_select :vendor_id, @vendors, :id, :name %>
+    <%# <%= form.select :vendor_id, :"Select Vendor" => true%> 
+    <%= form.text_field :item_id,:readonly => true, value: @item.id %>
+  </div>
   <div class="form-group">
     <%= form.label :quantity %><br>
     <%= form.text_field :purchase_quantity, class: "form-control" %>
   </div>
 
     <div class="form-group">
-    <%= form.label :cost_price %><br>
     <%= form.text_field :cost_price, class: "form-control" %>
   </div>
 

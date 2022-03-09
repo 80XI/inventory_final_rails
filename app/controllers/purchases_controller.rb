@@ -16,10 +16,10 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     if @purchase.save
-      redirect_to item_path(@purchase.post)     
-   else
-    render :new, status: :unprocessable_entity
-   end
+      redirect_to purchase_path(@purchase)  
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
