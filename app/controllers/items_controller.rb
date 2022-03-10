@@ -17,6 +17,14 @@ class ItemsController < ApplicationController
     redirect_to category_path(@category)
   end
 
+  
+  def destroy
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:id])
+    @item.destroy
+    redirect_to category_path(@article), status: 303
+  end
+  
   private
     def item_params
       params.require(:item).permit(:name, :status, :cost_price, :selling_price, :category_id, :quantity, :ideal_quantity, :header_image)
