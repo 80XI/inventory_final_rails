@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  resources :items, :vendors, :purchases
+  resources :sales do
+    resources :customers
+  end
+
+  resources :items, :vendors, :purchases, :customers
   # Defines the root path route ("/")
   # root "articles#index"
 end
