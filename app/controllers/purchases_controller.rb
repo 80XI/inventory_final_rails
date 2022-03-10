@@ -22,6 +22,10 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def show
+      @purchase = Purchase.find_by(id: params[:id])
+  end
+
   private
     def purchase_params
       params.require(:purchase).permit(:item_id, :vendor_id, :cost_price, :purchase_quantity, :total_price)
