@@ -13,8 +13,11 @@ class ItemsController < ApplicationController
 
   def create
     @category = Category.find(params[:category_id])
-    @item = @category.items.create(item_params)
-    redirect_to category_path(@category)
+    if @item = @category.items.create(item_params)
+      redirect_to category_path(@category)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   
