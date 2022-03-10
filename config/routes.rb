@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sales/index'
   # get 'purchases/index'
   # get 'vendors/index'
   devise_for :users
